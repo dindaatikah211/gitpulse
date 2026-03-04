@@ -1,14 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Separator } from "@/shared/components/ui/separator";
 import { Github, Mail, Calendar, AtSign } from "lucide-react";
-
-interface AccountProfileCardProps {
-  name:      string;
-  username:  string;
-  email:     string;
-  avatar:    string;
-  createdAt: string;
-}
+import { AccountProfileCardProps } from "../types";
 
 const INFO_ITEMS = (username: string, email: string, createdAt: string) => [
   { icon: AtSign,    label: "Username",          value: username  },

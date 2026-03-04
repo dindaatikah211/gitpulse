@@ -2,22 +2,22 @@
 
 Platform analisis kinerja dan pola kontribusi repository GitHub menggunakan metadata dan Machine Learning.
 
-## 📌 Deskripsi
+## Deskripsi
 
 GitPulse adalah aplikasi web yang membantu evaluator dan tim developer memantau produktivitas, health score, dan pola kontribusi repository GitHub secara otomatis menggunakan Machine Learning.
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-- 🔐 **GitHub OAuth Login** — autentikasi aman via akun GitHub
-- 👥 **Team Space** — buat tim dengan QR Code invite
-- 📡 **Analisis Repository** — fetch commit, issue, dan metadata dari GitHub API
-- 🤖 **ML Scoring Otomatis** — 3 model ML untuk analisis kinerja tim
+- **GitHub OAuth Login** — autentikasi aman via akun GitHub
+- **Team Space** — buat tim dengan QR Code invite
+- **Analisis Repository** — fetch commit, issue, dan metadata dari GitHub API
+- **ML Scoring Otomatis** — 3 model ML untuk analisis kinerja tim
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework** — Next.js 15 (App Router)
 - **Language** — TypeScript
@@ -32,17 +32,11 @@ GitPulse adalah aplikasi web yang membantu evaluator dan tim developer memantau 
 
 ## 🚀 Cara Menjalankan
 
-### Prerequisites
-- Node.js v20+
-- pnpm
-- Akun GitHub (untuk OAuth)
-- Project Firebase
-
 ### Installation
 
 1. Clone repository
 ```bash
-git clone https://github.com/USERNAME/gitpulse.git
+git clone https://github.com/dindaatikah211/gitpulse.git
 cd gitpulse
 ```
 

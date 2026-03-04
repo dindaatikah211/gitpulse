@@ -33,13 +33,13 @@ export function LoginRightPanel() {
         </div>
 
         {/* Role info */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           {LOGIN_ROLES.map(({ icon, name, how, badge, className }) => (
-            <div key={name} className={`${className} border rounded-xl p-4 text-center`}>
-              <div className="text-2xl mb-1">{icon}</div>
-              <div className="font-bold text-sm">{name}</div>
-              <div className="text-muted-foreground text-xs mt-1">{how}</div>
-              <Badge variant="secondary" className="mt-2 text-xs">{badge}</Badge>
+            <div key={name} className={`${className} border rounded-xl p-3 text-center`}>
+              <div className="text-xl mb-1">{icon}</div>
+              <div className="font-bold text-xs">{name}</div>
+              <div className="text-muted-foreground text-[10px] mt-1">{how}</div>
+              <Badge variant="secondary" className="mt-2 text-[10px] px-1">{badge}</Badge>
             </div>
           ))}
         </div>

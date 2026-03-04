@@ -14,7 +14,7 @@ export function LandingRoles() {
           <p className="text-gray-500 font-light leading-relaxed mb-8">
             GitPulse dirancang untuk dua tipe pengguna dengan akses berbeda. Role ditentukan otomatis dari aksi yang kamu lakukan.
           </p>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {LANDING_ROLES.map(({ icon, name, badge, badgeColor, perms }) => (
               <div key={name} className="border border-gray-100 rounded-xl p-6 hover:border-green-300 transition-colors">
                 <div className="flex items-center gap-3 mb-3">

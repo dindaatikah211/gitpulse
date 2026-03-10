@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/shared/lib/auth";
-import { Sidebar } from "@/shared/components/layout/sidebar";
+import { AuthShell } from "@/shared/components/layout/auto-shell";
 
 export default async function AuthLayout({
   children,
@@ -10,12 +10,5 @@ export default async function AuthLayout({
   const session = await auth();
   if (!session) redirect("/login");
 
-  return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
-      <main className="ml-16 flex-1 p-6 overflow-auto">
-        {children}
-      </main>
-    </div>
-  );
+  return <AuthShell>{children}</AuthShell>;
 }

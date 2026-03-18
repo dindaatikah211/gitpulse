@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { signIn } from "@/shared/lib/auth";
+import { signIn } from "next-auth/react";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
 import { Github, Check, X } from "lucide-react";
@@ -7,6 +9,14 @@ import { LOGIN_ROLES } from "../constants/roles";
 import { LOGIN_PERMISSIONS } from "../constants/permissions";
 
 export function LoginRightPanel() {
+  const handleLogin = () => {
+    signIn("github", {
+      callbackUrl: "/dashboard",
+    }, {
+      prompt: "select_account",
+    });
+  };
+
   return (
     <div className="flex items-center justify-center p-8 md:p-12 bg-white">
       <div className="w-full max-w-sm space-y-6">
@@ -28,7 +38,7 @@ export function LoginRightPanel() {
             Masuk ke<br />GitPulse
           </h2>
           <p className="text-muted-foreground text-sm mt-3 leading-relaxed">
-            Role ditentukan otomatis — buat tim jadi Evaluator, gabung tim jadi Contributor.
+            Role ditentukan otomatis — buat tim jadi Owner, gabung tim jadi Contributor.
           </p>
         </div>
 
@@ -61,20 +71,13 @@ export function LoginRightPanel() {
         </div>
 
         {/* Login button */}
-        <form
-          action={async () => {
-            "use server";
-            await signIn("github", { redirectTo: "/dashboard" });
-          }}
+        <Button
+          onClick={handleLogin}
+          className="w-full bg-gray-900 hover:bg-[#0f3d23] text-white py-6 rounded-xl gap-3"
         >
-          <Button
-            type="submit"
-            className="w-full bg-gray-900 hover:bg-[#0f3d23] text-white py-6 rounded-xl gap-3"
-          >
-            <Github className="w-5 h-5" />
-            Lanjutkan dengan GitHub
-          </Button>
-        </form>
+          <Github className="w-5 h-5" />
+          Lanjutkan dengan GitHub
+        </Button>
 
         {/* Terms */}
         <p className="text-center text-xs text-muted-foreground">

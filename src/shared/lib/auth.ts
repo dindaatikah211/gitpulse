@@ -4,10 +4,19 @@ import { db } from "./firebase";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  session: {
+    strategy: "jwt",
+    maxAge:   60 * 60 * 24, 
+  },
   providers: [
     GitHub({
       clientId:     process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          prompt: "select_account",
+        },
+      },
     }),
   ],
   callbacks: {
@@ -15,10 +24,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       const uid = profile?.id?.toString();
       if (!uid) return false;
 
-      const userRef = doc(db, "users", uid);
+      const userRef  = doc(db, "users", uid);
       const userSnap = await getDoc(userRef);
 
-      // Simpan user ke Firestore hanya jika belum ada
       if (!userSnap.exists()) {
         await setDoc(userRef, {
           uid,

@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeIn } from "../contants/landing-animations";
+
 const NAV_LINKS = [
   { label: "Fitur",      href: "#features"    },
   { label: "Cara Kerja", href: "#how-it-works" },
@@ -6,7 +11,13 @@ const NAV_LINKS = [
 
 export function LandingFooter() {
   return (
-    <footer className="bg-gray-900 border-t border-white/5 px-[5%] py-8 flex flex-wrap items-center justify-between gap-4">
+    <motion.footer
+      variants={fadeIn}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="bg-gray-900 border-t border-white/5 px-[5%] py-8 flex flex-wrap items-center justify-between gap-4"
+    >
       <div className="font-bold text-white">
         Git<span className="text-[#00d964]">Pulse</span>
       </div>
@@ -20,6 +31,6 @@ export function LandingFooter() {
           </a>
         ))}
       </div>
-    </footer>
+    </motion.footer>
   );
 }

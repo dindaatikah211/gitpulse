@@ -1,22 +1,33 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Badge } from "@/shared/components/ui/badge";
 import { Check } from "lucide-react";
 import { LANDING_ROLES, LANDING_TEAM_PREVIEW } from "../contants/roles";
+import { fadeUp, slideInLeft, slideInRight, staggerContainer } from "../contants/landing-animations";
 
 export function LandingRoles() {
   return (
     <section id="roles" className="py-24 px-[5%]">
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <p className="text-[#00b853] text-xs font-semibold tracking-widest uppercase mb-3">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.p variants={fadeUp} className="text-[#00b853] text-xs font-semibold tracking-widest uppercase mb-3">
             Sistem Role
-          </p>
-          <h2 className="text-4xl font-bold mb-4">Dua peran,<br />satu ekosistem</h2>
-          <p className="text-gray-500 font-light leading-relaxed mb-8">
+          </motion.p>
+          <motion.h2 variants={fadeUp} className="text-4xl font-bold mb-4">
+            Dua peran,<br />satu ekosistem
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-gray-500 font-light leading-relaxed mb-8">
             GitPulse dirancang untuk dua tipe pengguna dengan akses berbeda. Role ditentukan otomatis dari aksi yang kamu lakukan.
-          </p>
-          <div className="space-y-3">
+          </motion.p>
+          <motion.div variants={staggerContainer} className="space-y-3">
             {LANDING_ROLES.map(({ icon, name, badge, badgeColor, perms }) => (
-              <div key={name} className="border border-gray-100 rounded-xl p-6 hover:border-green-300 transition-colors">
+              <motion.div key={name} variants={slideInLeft} className="border border-gray-100 rounded-xl p-6 hover:border-green-300 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">{icon}</span>
                   <span className="font-bold">{name}</span>
@@ -30,13 +41,18 @@ export function LandingRoles() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Team preview */}
-        <div className="bg-[#f4fdf7] border border-green-100 rounded-2xl p-6">
+        <motion.div
+          variants={slideInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="bg-[#f4fdf7] border border-green-100 rounded-2xl p-6"
+        >
           <p className="font-bold text-sm mb-4">🏠 Team: Proyek Tugas Akhir</p>
           <div className="space-y-3">
             {LANDING_TEAM_PREVIEW.map(({ initials, name, role, score, bg }) => (
@@ -59,7 +75,7 @@ export function LandingRoles() {
               <div className="h-full w-[85%] bg-[#00d964] rounded-full" />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

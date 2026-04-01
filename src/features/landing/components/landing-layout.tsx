@@ -9,7 +9,7 @@ import { LandingFooter }     from "./landing-footer";
 
 export function LandingLayout() {
   return (
-    <main className="bg-white text-gray-900 overflow-x-hidden">
+    <main className="bg-black text-white overflow-x-hidden">
       <LandingNavbar />
       <LandingHero />
       <LandingFeatures />

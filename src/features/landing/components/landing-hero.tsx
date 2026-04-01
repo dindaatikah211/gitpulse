@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/shared/components/ui/button";
 import { Github } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../contants/landing-animations";
+
+const VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4";
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,14 +22,14 @@ function ParticleCanvas() {
 
     const particles: { x: number; y: number; vx: number; vy: number; r: number; alpha: number }[] = [];
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 60; i++) {
       particles.push({
         x:     Math.random() * canvas.width,
         y:     Math.random() * canvas.height,
-        vx:    (Math.random() - 0.5) * 0.4,
-        vy:    (Math.random() - 0.5) * 0.4,
-        r:     Math.random() * 2 + 1,
-        alpha: Math.random() * 0.5 + 0.1,
+        vx:    (Math.random() - 0.5) * 0.3,
+        vy:    (Math.random() - 0.5) * 0.3,
+        r:     Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.4 + 0.05,
       });
     }
 
@@ -48,17 +49,16 @@ function ParticleCanvas() {
         ctx.fill();
       });
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx   = particles[i].x - particles[j].x;
           const dy   = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
+          if (dist < 120) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0, 217, 100, ${0.1 * (1 - dist / 100)})`;
+            ctx.strokeStyle = `rgba(0, 217, 100, ${0.08 * (1 - dist / 120)})`;
             ctx.lineWidth   = 0.5;
             ctx.stroke();
           }
@@ -72,50 +72,91 @@ function ParticleCanvas() {
     return () => cancelAnimationFrame(animId);
   }, []);
 
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10" />;
+}
+
+function PillButton({ href, variant = "outline", children }: { href: string; variant?: "outline" | "solid"; children: React.ReactNode }) {
+  const inner = variant === "solid"
+    ? "bg-[#00d964] text-gray-900"
+    : "bg-black text-white";
+
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-    />
+    <Link href={href} className="relative inline-flex rounded-full p-[0.6px] border border-white/30">
+      <span
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px rounded-full blur-sm"
+        style={{ background: "linear-gradient(90deg, transparent, #00d96480, transparent)" }}
+      />
+      <span className={`relative inline-flex items-center gap-2 ${inner} rounded-full px-[29px] py-[11px] text-sm font-medium`}>
+        {children}
+      </span>
+    </Link>
   );
 }
 
 export function LandingHero() {
   return (
-    <section className="min-h-screen pt-28 pb-20 px-[5%] bg-[#f4fdf7] flex items-center relative overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-black">
+      <video
+        src={VIDEO_URL}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/50 z-[1]" />
       <ParticleCanvas />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-radial-[at_70%_30%] from-[#00d96420] to-transparent pointer-events-none" />
 
       <motion.div
-        className="max-w-2xl relative z-10"
+        className="relative z-20 flex flex-col items-center text-center px-[5%] pt-[160px] md:pt-[180px] pb-[102px]"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={fadeIn} className="inline-flex items-center gap-2 bg-white border border-green-200 px-3 py-1.5 rounded-full text-xs font-semibold text-green-700 mb-6">
-          <span className="w-1.5 h-1.5 bg-[#00d964] rounded-full animate-pulse" />
-          Powered by Machine Learning
+        <motion.div
+          variants={fadeIn}
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-10"
+          style={{
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            borderRadius: "20px",
+          }}
+        >
+          <span className="w-1 h-1 rounded-full bg-[#00d964]" />
+          <span className="text-white/60 text-[13px] font-medium">Powered by</span>
+          <span className="text-white text-[13px] font-medium">Machine Learning</span>
         </motion.div>
 
-        <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-bold leading-tight mb-5">
-          Analisis Kontribusi<br />GitHub Tim Kamu<br />
-          <span className="text-[#00b853]">dengan Cerdas.</span>
+        <motion.h1
+          variants={fadeUp}
+          className="font-medium leading-[1.28] mb-6 max-w-[613px]"
+          style={{
+            fontSize: "clamp(36px, 5vw, 56px)",
+            background: "linear-gradient(144.5deg, #ffffff 28%, rgba(0,0,0,0) 115%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Analisis Kontribusi GitHub Tim Kamu dengan Cerdas
         </motion.h1>
 
-        <motion.p variants={fadeUp} className="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg font-light">
-          GitPulse membantu evaluator dan tim developer memantau produktivitas, health score, dan pola kontribusi repository secara otomatis.
+        <motion.p
+          variants={fadeUp}
+          className="text-[15px] font-normal max-w-[680px] mb-10"
+          style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}
+        >
+          GitPulse membantu evaluator dan tim developer memantau produktivitas, health score, dan pola kontribusi repository secara otomatis — berbasis Machine Learning.
         </motion.p>
 
-        <motion.div variants={fadeUp} className="flex gap-3 flex-wrap">
-          <Button asChild className="bg-gray-900 hover:bg-[#0f3d23] text-white px-6 py-6 rounded-xl gap-2">
-            <Link href="/login">
-              <Github className="w-5 h-5" />
-              Login with GitHub
-            </Link>
-          </Button>
-          <Button asChild variant="outline" className="px-6 py-6 rounded-xl border-2 hover:border-gray-900">
-            <a href="#how-it-works">Lihat Cara Kerja →</a>
-          </Button>
+        <motion.div variants={fadeUp} className="flex gap-3 flex-wrap justify-center">
+          <PillButton href="/login" variant="solid">
+            <Github className="w-4 h-4" />
+            Login with GitHub
+          </PillButton>
+          <PillButton href="#how-it-works">
+            Lihat Cara Kerja →
+          </PillButton>
         </motion.div>
       </motion.div>
     </section>

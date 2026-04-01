@@ -1,42 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/shared/components/ui/badge";
 import { Check } from "lucide-react";
 import { LANDING_ROLES, LANDING_TEAM_PREVIEW } from "../contants/roles";
 import { fadeUp, slideInLeft, slideInRight, staggerContainer } from "../contants/landing-animations";
 
 export function LandingRoles() {
   return (
-    <section id="roles" className="py-24 px-[5%]">
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="roles" className="py-32 px-[5%] bg-black border-t border-white/5">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-start">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.p variants={fadeUp} className="text-[#00b853] text-xs font-semibold tracking-widest uppercase mb-3">
-            Sistem Role
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="text-4xl font-bold mb-4">
-            Dua peran,<br />satu ekosistem
+          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-px bg-white/20" />
+            <p className="text-xs text-white/40 uppercase tracking-[0.3em] font-medium">Sistem Role</p>
+          </motion.div>
+
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-medium text-white leading-[1.2] mb-5">
+            Tiga peran,{" "}
+            <span
+              style={{
+                background: "linear-gradient(144.5deg, #00d964 28%, rgba(0,217,100,0.2) 115%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              satu ekosistem
+            </span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-gray-500 font-light leading-relaxed mb-8">
-            GitPulse dirancang untuk dua tipe pengguna dengan akses berbeda. Role ditentukan otomatis dari aksi yang kamu lakukan.
+
+          <motion.p variants={fadeUp} className="text-sm text-white/40 leading-relaxed mb-10 font-light max-w-sm">
+            Role ditentukan otomatis dari aksi yang kamu lakukan — buat tim atau bergabung.
           </motion.p>
+
           <motion.div variants={staggerContainer} className="space-y-3">
-            {LANDING_ROLES.map(({ icon, name, badge, badgeColor, perms }) => (
-              <motion.div key={name} variants={slideInLeft} className="border border-gray-100 rounded-xl p-6 hover:border-green-300 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{icon}</span>
-                  <span className="font-bold">{name}</span>
-                  <Badge className={`${badgeColor} ml-auto border-0`}>{badge}</Badge>
+            {LANDING_ROLES.map(({ icon: Icon, name, badge, perms }) => (
+              <motion.div
+                key={name}
+                variants={slideInLeft}
+                className="group border border-white/8 rounded-2xl p-5 hover:border-[#00d964]/20 hover:bg-white/[0.02] transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-[#00d964]/30 group-hover:bg-[#00d964]/5 transition-all duration-300">
+                    <Icon className="w-4 h-4 text-white/50 group-hover:text-[#00d964] transition-colors duration-300" />
+                  </div>
+                  <span className="font-medium text-white text-sm">{name}</span>
+                  <span className="ml-auto text-[10px] text-white/30 border border-white/10 rounded-full px-2.5 py-0.5">{badge}</span>
                 </div>
-                <div className="space-y-1.5">
-                  {perms.map(p => (
-                    <div key={p} className="flex items-center gap-2 text-sm text-gray-600">
-                      <Check className="w-3.5 h-3.5 text-[#00b853] flex-shrink-0" />
+                <div className="space-y-2">
+                  {perms.map((p) => (
+                    <div key={p} className="flex items-center gap-2.5 text-xs text-white/35">
+                      <Check className="w-3 h-3 text-[#00d964] flex-shrink-0" />
                       {p}
                     </div>
                   ))}
@@ -50,29 +69,34 @@ export function LandingRoles() {
           variants={slideInRight}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="bg-[#f4fdf7] border border-green-100 rounded-2xl p-6"
+          viewport={{ once: true, margin: "-100px" }}
+          className="border border-white/8 rounded-3xl p-6 bg-white/[0.02]"
         >
-          <p className="font-bold text-sm mb-4">🏠 Team: Proyek Tugas Akhir</p>
-          <div className="space-y-3">
+          <div className="flex items-center gap-2 mb-6">
+            <div className="w-2 h-2 rounded-full bg-[#00d964]" />
+            <p className="text-xs font-medium text-white/50">Team: Proyek Tugas Akhir</p>
+          </div>
+
+          <div className="space-y-2 mb-6">
             {LANDING_TEAM_PREVIEW.map(({ initials, name, role, score, bg }) => (
-              <div key={name} className="flex items-center gap-3 bg-white rounded-xl p-3 border border-gray-100">
-                <div className={`${bg} w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
+              <div key={name} className="flex items-center gap-3 bg-white/[0.03] rounded-xl p-3 border border-white/5 hover:border-white/10 transition-colors">
+                <div className={`${bg} w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
                   {initials}
                 </div>
-                <div className="flex-1">
-                  <div className="text-sm font-medium">{name}</div>
-                  <div className="text-xs text-gray-500">{role}</div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-white truncate">{name}</p>
+                  <p className="text-xs text-white/35">{role}</p>
                 </div>
-                <div className="font-bold text-green-600">{score}</div>
+                <span className="text-sm font-bold text-[#00d964]">{score}</span>
               </div>
             ))}
           </div>
-          <div className="mt-4 bg-white rounded-xl p-4 border border-gray-100">
-            <p className="text-xs text-gray-500 mb-1">Rata-rata Health Score Tim</p>
-            <p className="text-3xl font-bold text-green-600">85.5</p>
-            <div className="h-2 bg-gray-100 rounded-full mt-2">
-              <div className="h-full w-[85%] bg-[#00d964] rounded-full" />
+
+          <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+            <p className="text-xs text-white/35 mb-2">Rata-rata Health Score Tim</p>
+            <p className="text-3xl font-bold text-[#00d964] mb-3">85.5</p>
+            <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+              <div className="h-full rounded-full bg-[#00d964]" style={{ width: "85.5%" }} />
             </div>
           </div>
         </motion.div>

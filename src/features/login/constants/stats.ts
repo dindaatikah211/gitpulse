@@ -5,4 +5,4 @@ export const LOGIN_STATS = [
 ];
 
 export const COMMIT_HEIGHTS = [35, 60, 45, 80, 55, 30, 70];
-export const COMMIT_DAYS    = ["Sen", "Sel", "Rab", "Kam", "Jum", "Min"];
+export const COMMIT_DAYS    = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];

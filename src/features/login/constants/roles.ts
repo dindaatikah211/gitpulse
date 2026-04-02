@@ -1,23 +1,30 @@
-export const LOGIN_ROLES = [
+import { Crown, GraduationCap, Code2 } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+
+export interface LoginRole {
+  icon: LucideIcon;
+  name: string;
+  how:  string;
+  badge: string;
+}
+
+export const LOGIN_ROLES: LoginRole[] = [
   {
-    icon: "👑",
+    icon:  Crown,
     name: "Owner",
     how: "Buat Team Space baru",
     badge: "Create Team",
-    className: "bg-yellow-50 border-yellow-200",
   },
   {
-    icon: "🎓",
+    icon:  GraduationCap,
     name: "Evaluator",
-    how: "Di-promote oleh Owner / Evaluator",
+    how: "Di-promote oleh Owner",
     badge: "Promoted",
-    className: "bg-blue-50 border-blue-200",
   },
   {
-    icon: "💻",
+    icon:  Code2,
     name: "Contributor",
-    how: "Join via QR Code atau kode",
+    how: "Join via QR Code",
     badge: "Join Team",
-    className: "bg-green-50 border-green-200",
   },
 ];

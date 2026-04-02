@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import { Button } from "@/shared/components/ui/button";
 import { fadeUp, fadeIn, staggerContainer } from "../contants/landing-animations";
 
 const VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4";
@@ -42,7 +43,6 @@ function ParticleCanvas() {
         p.y += p.vy;
         if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(0, 217, 100, ${p.alpha})`;
@@ -75,35 +75,10 @@ function ParticleCanvas() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10" />;
 }
 
-function PillButton({ href, variant = "outline", children }: { href: string; variant?: "outline" | "solid"; children: React.ReactNode }) {
-  const inner = variant === "solid"
-    ? "bg-[#00d964] text-gray-900"
-    : "bg-black text-white";
-
-  return (
-    <Link href={href} className="relative inline-flex rounded-full p-[0.6px] border border-white/30">
-      <span
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px rounded-full blur-sm"
-        style={{ background: "linear-gradient(90deg, transparent, #00d96480, transparent)" }}
-      />
-      <span className={`relative inline-flex items-center gap-2 ${inner} rounded-full px-[29px] py-[11px] text-sm font-medium`}>
-        {children}
-      </span>
-    </Link>
-  );
-}
-
 export function LandingHero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-black">
-      <video
-        src={VIDEO_URL}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <video src={VIDEO_URL} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/50 z-[1]" />
       <ParticleCanvas />
 
@@ -150,13 +125,28 @@ export function LandingHero() {
         </motion.p>
 
         <motion.div variants={fadeUp} className="flex gap-3 flex-wrap justify-center">
-          <PillButton href="/login" variant="solid">
-            <Github className="w-4 h-4" />
-            Login with GitHub
-          </PillButton>
-          <PillButton href="#how-it-works">
-            Lihat Cara Kerja →
-          </PillButton>
+          <Button
+            asChild
+            className="relative overflow-hidden rounded-full gap-2 px-7 py-6 text-sm font-medium text-gray-900 border border-white/30 hover:opacity-90"
+            style={{ background: "#00d964", boxShadow: "0 0 20px rgba(0,217,100,0.3)" }}
+          >
+            <Link href="/login">
+              <span
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px rounded-full blur-sm"
+                style={{ background: "linear-gradient(90deg, transparent, #00d96480, transparent)" }}
+              />
+              <Github className="w-4 h-4" />
+              Login with GitHub
+            </Link>
+          </Button>
+
+          <Button
+            asChild
+            variant="outline"
+            className="rounded-full gap-2 px-7 py-6 text-sm font-medium text-white bg-transparent border-white/30 hover:bg-white/5 hover:text-white hover:border-white/50"
+          >
+            <a href="#how-it-works">Lihat Cara Kerja →</a>
+          </Button>
         </motion.div>
       </motion.div>
     </section>

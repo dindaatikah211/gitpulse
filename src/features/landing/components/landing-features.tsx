@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { Badge } from "@/shared/components/ui/badge";
 import { LANDING_FEATURES } from "../contants/features";
 import { fadeUp, staggerContainer } from "../contants/landing-animations";
 
@@ -52,20 +53,21 @@ export function LandingFeatures() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{ background: "radial-gradient(circle at 50% 0%, rgba(0,217,100,0.04) 0%, transparent 60%)" }}
               />
-
               <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#00d964]/30 group-hover:bg-[#00d964]/5 transition-all duration-300">
                 <Icon className="w-5 h-5 text-white/60 group-hover:text-[#00d964] transition-colors duration-300" />
               </div>
-
               <h3 className="text-lg font-medium text-white mb-3">{title}</h3>
               <p className="text-sm text-white/40 leading-relaxed mb-6 font-light">{desc}</p>
-
               <div className="flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <span key={tag} className="inline-flex items-center gap-1.5 text-xs text-white/30 border border-white/10 rounded-full px-3 py-1">
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className="gap-1.5 text-white/30 border-white/10 bg-transparent rounded-full text-xs font-normal"
+                  >
                     <Check className="w-2.5 h-2.5 text-[#00d964]" />
                     {tag}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </motion.div>

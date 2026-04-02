@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Menu, X } from "lucide-react";
+import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/lib/utils";
 
 const NAV_LINKS = [
@@ -12,20 +13,6 @@ const NAV_LINKS = [
   { label: "Role",       href: "#roles"        },
   { label: "Tech Stack", href: "#tech"         },
 ];
-
-function PillButton({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link href={href} className="relative inline-flex rounded-full p-[0.6px] border border-white/20 hover:border-white/40 transition-colors">
-      <span
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px rounded-full blur-sm"
-        style={{ background: "linear-gradient(90deg, transparent, #00d96460, transparent)" }}
-      />
-      <span className="relative inline-flex items-center gap-2 bg-black text-white rounded-full px-5 py-2 text-sm font-medium">
-        {children}
-      </span>
-    </Link>
-  );
-}
 
 export function LandingNavbar() {
   const [open,     setOpen]     = useState(false);
@@ -56,26 +43,33 @@ export function LandingNavbar() {
 
         <div className="hidden md:flex items-center gap-7">
           {NAV_LINKS.map(({ label, href }) => (
-            <a key={label} href={href} className="flex items-center gap-1 text-white/50 hover:text-white text-sm font-medium transition-colors">
+            <a key={label} href={href} className="text-white/50 hover:text-white text-sm font-medium transition-colors">
               {label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <PillButton href="/login">
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="hidden md:inline-flex rounded-full gap-2 bg-black text-white border-white/20 hover:bg-white/5 hover:text-white hover:border-white/40"
+        >
+          <Link href="/login">
             <Github className="w-3.5 h-3.5" />
             Login with GitHub
-          </PillButton>
-        </div>
+          </Link>
+        </Button>
 
-        <button
-          className="md:hidden p-1.5 rounded-lg text-white/60 hover:text-white transition-colors"
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden text-white/60 hover:text-white hover:bg-white/5"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        </Button>
       </nav>
 
       <AnimatePresence>
@@ -110,10 +104,16 @@ export function LandingNavbar() {
                   </a>
                 ))}
                 <div className="mt-2 pt-2 border-t border-white/10">
-                  <PillButton href="/login">
-                    <Github className="w-3.5 h-3.5" />
-                    Login with GitHub
-                  </PillButton>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full rounded-xl gap-2 bg-black text-white border-white/20 hover:bg-white/5 hover:text-white"
+                  >
+                    <Link href="/login" onClick={() => setOpen(false)}>
+                      <Github className="w-3.5 h-3.5" />
+                      Login with GitHub
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </motion.div>

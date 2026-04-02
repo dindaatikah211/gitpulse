@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { Badge } from "@/shared/components/ui/badge";
+import { Separator } from "@/shared/components/ui/separator";
 import { LANDING_ROLES, LANDING_TEAM_PREVIEW } from "../contants/roles";
 import { fadeUp, slideInLeft, slideInRight, staggerContainer } from "../contants/landing-animations";
 
@@ -19,7 +21,6 @@ export function LandingRoles() {
             <div className="w-8 h-px bg-white/20" />
             <p className="text-xs text-white/40 uppercase tracking-[0.3em] font-medium">Sistem Role</p>
           </motion.div>
-
           <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-medium text-white leading-[1.2] mb-5">
             Tiga peran,{" "}
             <span
@@ -33,7 +34,6 @@ export function LandingRoles() {
               satu ekosistem
             </span>
           </motion.h2>
-
           <motion.p variants={fadeUp} className="text-sm text-white/40 leading-relaxed mb-10 font-light max-w-sm">
             Role ditentukan otomatis dari aksi yang kamu lakukan — buat tim atau bergabung.
           </motion.p>
@@ -50,8 +50,14 @@ export function LandingRoles() {
                     <Icon className="w-4 h-4 text-white/50 group-hover:text-[#00d964] transition-colors duration-300" />
                   </div>
                   <span className="font-medium text-white text-sm">{name}</span>
-                  <span className="ml-auto text-[10px] text-white/30 border border-white/10 rounded-full px-2.5 py-0.5">{badge}</span>
+                  <Badge
+                    variant="outline"
+                    className="ml-auto text-[10px] text-white/30 border-white/10 bg-transparent rounded-full font-normal"
+                  >
+                    {badge}
+                  </Badge>
                 </div>
+                <Separator className="bg-white/5 mb-4" />
                 <div className="space-y-2">
                   {perms.map((p) => (
                     <div key={p} className="flex items-center gap-2.5 text-xs text-white/35">
@@ -76,7 +82,6 @@ export function LandingRoles() {
             <div className="w-2 h-2 rounded-full bg-[#00d964]" />
             <p className="text-xs font-medium text-white/50">Team: Proyek Tugas Akhir</p>
           </div>
-
           <div className="space-y-2 mb-6">
             {LANDING_TEAM_PREVIEW.map(({ initials, name, role, score, bg }) => (
               <div key={name} className="flex items-center gap-3 bg-white/[0.03] rounded-xl p-3 border border-white/5 hover:border-white/10 transition-colors">
@@ -91,7 +96,7 @@ export function LandingRoles() {
               </div>
             ))}
           </div>
-
+          <Separator className="bg-white/5 mb-6" />
           <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
             <p className="text-xs text-white/35 mb-2">Rata-rata Health Score Tim</p>
             <p className="text-3xl font-bold text-[#00d964] mb-3">85.5</p>

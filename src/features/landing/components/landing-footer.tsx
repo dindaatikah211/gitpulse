@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Cara Kerja", href: "#how-it-works" },
   { label: "Role",       href: "#roles"        },
   { label: "Tech Stack", href: "#tech"         },
+  { label: "About",      href: "#about"        },
 ];
 
 export function LandingFooter() {

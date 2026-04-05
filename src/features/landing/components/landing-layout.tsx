@@ -4,6 +4,7 @@ import { LandingFeatures }   from "./landing-features";
 import { LandingHowItWorks } from "./landing-how-it-works";
 import { LandingRoles }      from "./landing-roles";
 import { LandingTechStack }  from "./landing-tech-stack";
+import { LandingAbout }      from "./landing-about";
 import { LandingCTA }        from "./landing-cta";
 import { LandingFooter }     from "./landing-footer";
 
@@ -16,6 +17,7 @@ export function LandingLayout() {
       <LandingHowItWorks />
       <LandingRoles />
       <LandingTechStack />
+      <LandingAbout />
       <LandingCTA />
       <LandingFooter />
     </main>

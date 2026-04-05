@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Menu, X } from "lucide-react";
@@ -34,11 +35,7 @@ export function LandingNavbar() {
           : "bg-transparent border-b border-transparent"
       )}>
         <Link href="/" className="flex items-center gap-2 font-bold text-base text-white">
-          <div className="w-7 h-7 bg-[#00d964] rounded-lg flex items-center justify-center">
-            <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4">
-              <path d="M2 14 C4 10 8 6 10 10 C12 14 16 6 18 6" stroke="#0a2e1a" strokeWidth="2.5" strokeLinecap="round"/>
-            </svg>
-          </div>
+          <Image src="/logo.png" alt="GitPulse" width={32} height={32} className="rounded-md" />
           Git<span className="text-[#00d964]">Pulse</span>
         </Link>
 

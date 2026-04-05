@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -35,19 +36,16 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
   return (
     <TooltipProvider delayDuration={0}>
-      <aside className={cn(
-        "fixed left-0 top-0 h-screen flex flex-col py-5 px-3 z-40 transition-all duration-300 border-r border-white/8",
-        collapsed ? "w-16" : "w-56",
-      )}
+      <aside
+        className={cn(
+          "fixed left-0 top-0 h-screen flex flex-col py-5 px-3 z-40 transition-all duration-300 border-r border-white/8",
+          collapsed ? "w-16" : "w-56",
+        )}
         style={{ background: "rgba(0,0,0,0.95)", backdropFilter: "blur(20px)" }}
       >
         <div className={cn("flex items-center mb-8 px-1", collapsed ? "justify-center" : "justify-between")}>
           <Link href="/dashboard" className={cn("flex items-center gap-2.5", collapsed && "justify-center")}>
-            <div className="w-8 h-8 bg-[#00d964] rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4">
-                <path d="M2 14 C4 10 8 6 10 10 C12 14 16 6 18 6" stroke="#0a2e1a" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
-            </div>
+            <Image src="/logo.png" alt="GitPulse" width={32} height={32} className="rounded-md flex-shrink-0" />
             {!collapsed && (
               <span className="text-white font-bold text-base tracking-tight">GitPulse</span>
             )}
@@ -71,7 +69,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               <Link
                 href={href}
                 className={cn(
-                  "flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200",
+                  "flex items-center gap-3 rounded-md text-sm font-medium transition-all duration-200",
                   collapsed ? "w-10 h-10 justify-center mx-auto" : "px-3 py-2.5",
                   isActive
                     ? "bg-[#00d964] text-gray-900"
@@ -100,7 +98,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           {collapsed && (
             <button
               onClick={onToggle}
-              className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto text-white/30 hover:bg-white/8 hover:text-white transition-colors mb-1"
+              className="w-10 h-10 rounded-md flex items-center justify-center mx-auto text-white/30 hover:bg-white/8 hover:text-white transition-colors mb-1"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -114,7 +112,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
                 <Link
                   href="/account"
                   className={cn(
-                    "w-10 h-10 rounded-xl flex items-center justify-center mx-auto transition-all ring-2",
+                    "w-10 h-10 rounded-md flex items-center justify-center mx-auto transition-all ring-2",
                     pathname === "/account" ? "ring-[#00d964]" : "ring-transparent hover:ring-[#00d964]/50"
                   )}
                 >
@@ -133,7 +131,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
             <Link
               href="/account"
               className={cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all",
+                "flex items-center gap-3 px-3 py-2.5 rounded-md transition-all",
                 pathname === "/account" ? "bg-white/8 border border-white/10" : "hover:bg-white/8"
               )}
             >
@@ -153,7 +151,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               <TooltipTrigger asChild>
                 <button
                   onClick={() => signOut({ callbackUrl: "/login" })}
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto text-white/30 hover:bg-red-500/10 hover:text-red-400 transition-colors"
+                  className="w-10 h-10 rounded-md flex items-center justify-center mx-auto text-white/30 hover:bg-red-500/10 hover:text-red-400 transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>
@@ -163,7 +161,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           ) : (
             <button
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/35 hover:bg-red-500/10 hover:text-red-400 transition-colors"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-white/35 hover:bg-red-500/10 hover:text-red-400 transition-colors"
             >
               <LogOut className="w-4 h-4 flex-shrink-0" />
               Logout

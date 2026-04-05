@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Separator } from "@/shared/components/ui/separator";
 import { fadeUp, slideInRight, staggerContainer } from "../contants/landing-animations";
@@ -43,20 +44,32 @@ export function LandingAbout() {
               Platform ini dirancang untuk dua pihak — evaluator yang membutuhkan gambaran menyeluruh tentang tim, dan kontributor yang ingin memantau perkembangan diri sendiri secara transparan.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex items-center gap-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-[#00d964]">3</p>
-                <p className="text-xs text-white/35 mt-1">Model ML</p>
+            <motion.div variants={fadeUp} className="flex items-center gap-5">
+              <div className="flex items-center gap-3">
+                <Image src="/logo.png" alt="GitPulse" width={36} height={36} className="rounded-xl" />
+                <div>
+                  <p className="text-sm font-bold text-white">GitPulse</p>
+                  <p className="text-xs text-white/35">Platform Analisis GitHub</p>
+                </div>
               </div>
+
               <Separator orientation="vertical" className="h-10 bg-white/10" />
-              <div className="text-center">
-                <p className="text-2xl font-bold text-[#00d964]">3</p>
-                <p className="text-xs text-white/35 mt-1">Role Pengguna</p>
-              </div>
-              <Separator orientation="vertical" className="h-10 bg-white/10" />
-              <div className="text-center">
-                <p className="text-2xl font-bold text-[#00d964]">∞</p>
-                <p className="text-xs text-white/35 mt-1">Repository</p>
+
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-[#00d964]">3</p>
+                  <p className="text-xs text-white/35 mt-1">Model ML</p>
+                </div>
+                <Separator orientation="vertical" className="h-10 bg-white/10" />
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-[#00d964]">3</p>
+                  <p className="text-xs text-white/35 mt-1">Role</p>
+                </div>
+                <Separator orientation="vertical" className="h-10 bg-white/10" />
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-[#00d964]">∞</p>
+                  <p className="text-xs text-white/35 mt-1">Repository</p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

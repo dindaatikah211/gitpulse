@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { Github, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/shared/components/ui/card";
@@ -48,11 +49,7 @@ export function LoginLayout() {
         >
           <CardHeader className="pt-2 px-5">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 bg-[#00d964] rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4">
-                  <path d="M2 14 C4 10 8 6 10 10 C12 14 16 6 18 6" stroke="#0a2e1a" strokeWidth="2.5" strokeLinecap="round"/>
-                </svg>
-              </div>
+              <Image src="/logo.png" alt="GitPulse" width={28} height={28} className="rounded-md flex-shrink-0" />
               <span className="font-bold text-white text-sm">Git<span className="text-[#00d964]">Pulse</span></span>
             </div>
             <h2 className="text-lg font-medium text-white leading-tight">Masuk ke GitPulse</h2>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
@@ -90,14 +91,14 @@ export function LandingHero() {
       >
         <motion.div
           variants={fadeIn}
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-10"
+          className="inline-flex items-center gap-2.5 rounded-full px-4 py-2 mb-10"
           style={{
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.15)",
+            background:   "rgba(255,255,255,0.08)",
+            border:       "1px solid rgba(255,255,255,0.15)",
             borderRadius: "20px",
           }}
         >
-          <span className="w-1 h-1 rounded-full bg-[#00d964]" />
+          <Image src="/logo.png" alt="GitPulse" width={20} height={20} className="rounded-sm" />
           <span className="text-white/60 text-[13px] font-medium">Powered by</span>
           <span className="text-white text-[13px] font-medium">Machine Learning</span>
         </motion.div>
@@ -106,11 +107,11 @@ export function LandingHero() {
           variants={fadeUp}
           className="font-medium leading-[1.28] mb-6 max-w-[613px]"
           style={{
-            fontSize: "clamp(36px, 5vw, 56px)",
-            background: "linear-gradient(144.5deg, #ffffff 28%, rgba(0,0,0,0) 115%)",
+            fontSize:             "clamp(36px, 5vw, 56px)",
+            background:           "linear-gradient(144.5deg, #ffffff 28%, rgba(0,0,0,0) 115%)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            WebkitTextFillColor:  "transparent",
+            backgroundClip:       "text",
           }}
         >
           Analisis Kontribusi GitHub Tim Kamu dengan Cerdas

@@ -9,7 +9,7 @@ import { fadeUp, staggerContainer } from "../contants/landing-animations";
 function Marquee() {
   const text = "ANALISIS REPOSITORY • HEALTH SCORE • TEAM SPACE • MACHINE LEARNING • GITHUB OAUTH • ";
   return (
-    <div className="overflow-hidden border-t border-b border-white/5 py-5 mb-24">
+    <div className="bg-white/10 overflow-hidden border-t border-b border-white/5 py-5 mb-24">
       <motion.div
         className="whitespace-nowrap text-xs font-medium tracking-[0.2em] text-white/15 uppercase"
         animate={{ x: ["0%", "-50%"] }}

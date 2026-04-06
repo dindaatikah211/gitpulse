@@ -46,7 +46,7 @@ export function LandingAbout() {
 
             <motion.div variants={fadeUp} className="flex items-center gap-5">
               <div className="flex items-center gap-3">
-                <Image src="/logo.png" alt="GitPulse" width={36} height={36} className="rounded-xl" />
+                <Image src="/logo.png" alt="GitPulse" width={36} height={36} className="rounded-md" />
                 <div>
                   <p className="text-sm font-bold text-white">GitPulse</p>
                   <p className="text-xs text-white/35">Platform Analisis GitHub</p>

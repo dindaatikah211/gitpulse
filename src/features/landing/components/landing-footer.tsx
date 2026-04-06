@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../contants/landing-animations";
 
 const NAV_LINKS = [
-  { label: "Fitur",      href: "#features"    },
-  { label: "Cara Kerja", href: "#how-it-works" },
-  { label: "Role",       href: "#roles"        },
+  { label: "Features",      href: "#features"    },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Roles",       href: "#roles"        },
   { label: "Tech Stack", href: "#tech"         },
   { label: "About",      href: "#about"        },
 ];

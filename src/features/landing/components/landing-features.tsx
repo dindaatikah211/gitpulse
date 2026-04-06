@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 import { Badge } from "@/shared/components/ui/badge";
 import { LANDING_FEATURES } from "../contants/features";
 import { fadeUp, staggerContainer } from "../contants/landing-animations";
@@ -63,9 +62,8 @@ export function LandingFeatures() {
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="gap-1.5 text-white/30 border-white/10 bg-transparent rounded-full text-xs font-normal"
+                    className="gap-1.5 text-[#00d964]/50 border-[#00d964]/20 bg-transparent rounded-full text-xs font-normal"
                   >
-                    <Check className="w-2.5 h-2.5 text-[#00d964]" />
                     {tag}
                   </Badge>
                 ))}

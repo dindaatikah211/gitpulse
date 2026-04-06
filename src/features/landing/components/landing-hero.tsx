@@ -146,7 +146,7 @@ export function LandingHero() {
             variant="outline"
             className="rounded-full gap-2 px-7 py-6 text-sm font-medium text-white bg-transparent border-white/30 hover:bg-white/5 hover:text-white hover:border-white/50"
           >
-            <a href="#how-it-works">Lihat Cara Kerja →</a>
+            <a href="#how-it-works">Lihat Cara Kerja</a>
           </Button>
         </motion.div>
       </motion.div>

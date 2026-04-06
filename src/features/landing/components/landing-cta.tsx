@@ -79,7 +79,7 @@ export function LandingCTA() {
               variant="outline"
               className="rounded-full gap-2 px-8 py-6 text-sm font-medium text-white/70 hover:text-white bg-transparent border-white/15 hover:border-white/30 hover:bg-transparent"
             >
-              <a href="#features">Pelajari Fitur →</a>
+              <a href="#features">Pelajari Fitur</a>
             </Button>
           </motion.div>
         </motion.div>

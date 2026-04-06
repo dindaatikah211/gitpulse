@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
 import { Badge } from "@/shared/components/ui/badge";
 import { Separator } from "@/shared/components/ui/separator";
 import { LANDING_ROLES, LANDING_TEAM_PREVIEW } from "../contants/roles";
@@ -52,7 +51,7 @@ export function LandingRoles() {
                   <span className="font-medium text-white text-sm">{name}</span>
                   <Badge
                     variant="outline"
-                    className="ml-auto text-[10px] text-white/30 border-white/10 bg-transparent rounded-full font-normal"
+                    className="ml-auto text-[10px] text-[#00d964]/50 border-[#00d964]/20 bg-transparent rounded-full font-normal"
                   >
                     {badge}
                   </Badge>
@@ -61,7 +60,7 @@ export function LandingRoles() {
                 <div className="space-y-2">
                   {perms.map((p) => (
                     <div key={p} className="flex items-center gap-2.5 text-xs text-white/35">
-                      <Check className="w-3 h-3 text-[#00d964] flex-shrink-0" />
+                      <div className="w-1 h-1 rounded-full bg-[#00d964]" />
                       {p}
                     </div>
                   ))}
